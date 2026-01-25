@@ -1,9 +1,9 @@
 ; dayzopenlauncher inno setup script
 
-#define AppBaseVersion "1.1.1"
-#define AppBuildDate "16.01.2026"
+#define AppBaseVersion "1.1.2"
+#define AppBuildDate "25.01.2026"
 #define AppBuildNum "1"
-#define AppVersionCode 202601161
+#define AppVersionCode 202601251
 
 [Setup]
 AppId={{2CDE692F-4309-47F1-949B-52951F232B2B}}

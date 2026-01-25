@@ -27,6 +27,7 @@ class LiveUpdater:
                     self.live_info[(ip, server.get('port'))] = {
                         'players': live_data.get('players'),
                         'max_players': live_data.get('max_players'),
+                        'ping': live_data.get('ping'),
                         'queue': live_data.get('queue'),
                         'time': live_data.get('time'),
                         'map': live_data.get('map'),

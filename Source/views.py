@@ -76,6 +76,7 @@ class ViewRenderer:
         table.add_column("QUEUE", width=8, justify="right")
         table.add_column("MAP", width=12)
         table.add_column("TIME", width=8)
+        table.add_column("PING", width=6, justify="right")
 
         height = rows - 10
         if height < 5: height = 20
@@ -108,12 +109,14 @@ class ViewRenderer:
                 max_players = live.get('max_players', '?')
                 s_time = live.get('time', s.get('time', '00:00'))
                 s_map = live.get('map') or s.get('map', 'Unknown')
+                s_ping = live.get('ping', '?')
             else:
                 queue_val = s.get('queue', 0)
                 players = s.get('players', '?')
                 max_players = s.get('max_players', '?')
                 s_time = s.get('time', '00:00')
                 s_map = s.get('map', 'Unknown')
+                s_ping = '?'
 
             try:
                 q_int = int(queue_val)
@@ -126,14 +129,30 @@ class ViewRenderer:
             name_display = s.get('name', 'Unknown')
             if is_fav:
                 name_display = f"* {name_display}"
+
+            ping_display = str(s_ping)
+            if s_ping != '?':
+                try:
+                    p_val = int(s_ping)
+                    if p_val <= 75: ping_display = f"[green]{s_ping}[/green]"
+                    elif p_val <= 150: ping_display = f"[yellow]{s_ping}[/yellow]"
+                    else: ping_display = f"[red]{s_ping}[/red]"
+                    
+                    if is_sel:
+                         if p_val <= 75: ping_display = f"[bold green]{s_ping}[/bold green]"
+                         elif p_val <= 150: ping_display = f"[bold yellow]{s_ping}[/bold yellow]"
+                         else: ping_display = f"[bold red]{s_ping}[/bold red]" 
+                except:
+                    pass
             
             table.add_row(
                 ">" if is_sel else " ",
-                name_display[:(width-48)],
+                name_display[:(width-56)],
                 p_str,
                 q_display,
                 str(s_map),
                 str(s_time),
+                ping_display,
                 style=style
             )
 
