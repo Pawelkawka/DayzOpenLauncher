@@ -6,7 +6,7 @@ A simple Python TUI launcher for Windows PowerShell and Linux terminals that all
 
 - Browse DayZ servers using DZSA API.
 - Manage favorite and recent servers.
-- Live server info (players, queue, time, map) via A2S.
+- Live server info (players, queue, time, map, ping) via A2S.
 - Automated mod synchronization support.
 - Mutli platform support (Windows / Linux).
 

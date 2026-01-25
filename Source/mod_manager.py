@@ -41,7 +41,16 @@ class ModManager:
         
         if live_info_entry:
             console.print("[bold yellow]LIVE INFO[/bold yellow]")
+            
+            ping = live_info_entry.get('ping', '?')
+            ping_style = "white"
+            if isinstance(ping, int):
+                if ping <= 75: ping_style = "green"
+                elif ping <= 150: ping_style = "yellow"
+                else: ping_style = "red"
+
             console.print(f"Players: {live_info_entry.get('players')}/{live_info_entry.get('max_players')}")
+            console.print(f"Ping:    [{ping_style}]{ping} ms[/{ping_style}]")
             console.print(f"Queue:   [orange1]{live_info_entry.get('queue')}[/orange1]")
             console.print(f"Time:    {live_info_entry.get('time')}")
         else:
