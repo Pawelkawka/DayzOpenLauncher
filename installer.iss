@@ -1,14 +1,13 @@
 ; dayzopenlauncher inno setup script
 
-#define AppBaseVersion "1.1.2"
-#define AppBuildDate "25.01.2026"
-#define AppBuildNum "1"
-#define AppVersionCode 202601251
+#define AppBaseVersion "1.1.3"
+#define AppBuild "250320261"
+#define AppVersionCode 250320261
 
 [Setup]
 AppId={{2CDE692F-4309-47F1-949B-52951F232B2B}}
 AppName=DayzOpenLauncher
-AppVersion={#AppBaseVersion} ({#AppBuildDate}) {#AppBuildNum}
+AppVersion={#AppBaseVersion}.{#AppBuild}
 AppVerName=DayzOpenLauncher {#AppBaseVersion}
 UninstallDisplayName=DayzOpenLauncher
 AppPublisher=PawelKawka
@@ -48,7 +47,7 @@ Name: "{group}\DayzOpenLauncher"; Filename: "{app}\DayzOpenLauncher.exe"; IconFi
 Name: "{userdesktop}\DayzOpenLauncher"; Filename: "{app}\DayzOpenLauncher.exe"; Tasks: desktopicon; IconFilename: "{app}\icon.ico"
 
 [Registry]
-Root: HKCU; Subkey: "Software\DayzOpenLauncher"; ValueType: string; ValueName: "VersionString"; ValueData: "{#AppBaseVersion} ({#AppBuildDate}) {#AppBuildNum}"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\DayzOpenLauncher"; ValueType: string; ValueName: "VersionString"; ValueData: "{#AppBaseVersion}.{#AppBuild}"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\DayzOpenLauncher"; ValueType: dword; ValueName: "VersionCode"; ValueData: "{#AppVersionCode}"; Flags: uninsdeletekey
 
 [Run]
@@ -112,7 +111,7 @@ begin
     MaintenancePage := CreateInputOptionPage(wpWelcome,
       'Maintenance', 'Existing Installation Detected',
       'Select maintenance operation.' + #13#10 +
-      'Installed: ' + InstalledVer + ' | New: {#AppBaseVersion} ({#AppBuildDate}) {#AppBuildNum}',
+      'Installed: ' + InstalledVer + ' | New: {#AppBaseVersion}.{#AppBuild}',
       True, False);
 
     if (InstalledCode > 0) and (InstalledCode >= CurrentCode) then

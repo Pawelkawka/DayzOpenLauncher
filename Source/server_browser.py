@@ -1,4 +1,4 @@
-﻿import a2s
+import a2s
 import re
 import json
 import time
