@@ -26,10 +26,12 @@ class UpdateChecker:
                     latest_ver = latest_tag.lstrip('v').split('-')[0].split(' ')[0] 
                     
                     try:
-                        l_parts = [int(x) for x in latest_ver.split('.')]
-                        c_parts = [int(x) for x in VERSION.split('.')]
+                        latest_ver_clean = latest_ver.split('-')[0].split(' ')[0]
+                        current_ver_clean = VERSION.split('-')[0].split(' ')[0]
+                        l_parts = [int(p) for p in latest_ver_clean.split('.') if p.isdigit()]
+                        c_parts = [int(p) for p in current_ver_clean.split('.') if p.isdigit()]
                         is_new = l_parts > c_parts
-                    except:
+                    except Exception:
                         is_new = latest_ver != VERSION
 
                     if is_new:

@@ -24,7 +24,7 @@ class ViewRenderer:
         return HTML("".join(parts))
 
     def get_footer_text(self):
-        footer = f" <b>F1-F6</b>: Tabs | <b>F7</b>: Fav | <b>F8</b>: Refresh | <b>Ctrl+C</b>: Quit | <b>PageUp/PageDown</b>: Scroll Page | <b>Build:</b> {BUILD_INFO} "
+        footer = f" <b>F1-F6</b>: Tabs | <b>F7</b>: Fav | <b>F8</b>: Refresh | <b>Ctrl+C</b>: Quit | <b>PageUp/PageDown</b>: Scroll Page | <b>Ver:</b> {VERSION} | <b>Build:</b> {BUILD_INFO} "
         return HTML(footer)
 
     def get_settings_view(self, nick_input, dayz_path_input):

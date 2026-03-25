@@ -67,7 +67,16 @@ def check_for_updates():
         data = response.json()
         latest_tag = data.get("tag_name", "").lstrip('v')
         
-        if latest_tag != VERSION:
+        try:
+            latest_clean = latest_tag.split('-')[0].split(' ')[0]
+            current_clean = VERSION.split('-')[0].split(' ')[0]
+            latest_parts = [int(p) for p in latest_clean.split('.') if p.isdigit()]
+            current_parts = [int(p) for p in current_clean.split('.') if p.isdigit()]
+            is_new = latest_parts > current_parts
+        except Exception:
+            is_new = latest_tag != VERSION
+
+        if is_new:
             logging.info(f"New version available: {latest_tag}")
             return True, latest_tag
     except requests.exceptions.RequestException as e:
