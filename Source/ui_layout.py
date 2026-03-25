@@ -110,7 +110,7 @@ class UILayout:
             content=HSplit([
                 Frame(
                     tui.search_filter,
-                    title=f"{APP_NAME} v{VERSION}"
+                    title=f"{APP_NAME}"
                 ),
                 Window(content=FormattedTextControl(text=lambda: self.view_renderer.get_tabs_text(tui.current_tab, tui.tabs)), height=1),
                 DynamicContainer(get_body), 
