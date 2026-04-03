@@ -19,10 +19,6 @@ class UpdateChecker:
             try:
                 time.sleep(3)
                 
-                if platform.system() == "Linux" and VERSION == "1.1.4":
-                    # FOR LINUX 1.1.4 IS THE FINAL VERSION
-                    return
-                
                 response = requests.get("https://api.github.com/repos/PawelKawka/DayzOpenLauncher/releases/latest", timeout=5)
                 if response.status_code == 200:
                     data = response.json()
