@@ -6,4 +6,4 @@ __pycache__/
 *.sh text eol=lf
 *.log
 *.iss
-launcher.spec
+*.spec
