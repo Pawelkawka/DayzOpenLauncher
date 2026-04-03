@@ -19,10 +19,6 @@ class UpdateChecker:
             try:
                 time.sleep(3)
                 
-                if platform.system() == "Linux" and VERSION == "1.1.4":
-                    # FOR LINUX 1.1.4 IS THE FINAL VERSION
-                    return
-                
                 response = requests.get("https://api.github.com/repos/PawelKawka/DayzOpenLauncher/releases/latest", timeout=5)
                 if response.status_code == 200:
                     data = response.json()
@@ -56,14 +52,4 @@ class UpdateChecker:
         threading.Thread(target=_check, daemon=True).start()
 
     def start_update_process(self):
-        if platform.system() != "Linux":
-            webbrowser.open(self.tui.latest_update_info.get("url", ""))
-            return
-
-        try:
-            self.tui.run_update_on_exit = True
-            if hasattr(self.tui, 'app'):
-                self.tui.app.exit()
-        except Exception as e:
-            import logging
-            logging.error(f"Error initiating update: {e}")
+        webbrowser.open(self.tui.latest_update_info.get("url", ""))

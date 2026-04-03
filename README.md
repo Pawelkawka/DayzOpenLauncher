@@ -1,6 +1,6 @@
 # DayzOpenLauncher
 
-A simple Python TUI launcher for Windows PowerShell and Linux terminals that allows you to browse DayZ servers, manage favorites, settings, and mods.
+A simple Python TUI launcher for Windows Terminal that allows you to browse DayZ servers, manage favorites, settings, and mods.
 
 ## Features
 
@@ -8,7 +8,6 @@ A simple Python TUI launcher for Windows PowerShell and Linux terminals that all
 - Manage favorite and recent servers.
 - Live server info (players, queue, time, map, ping) via A2S.
 - Automated mod synchronization support.
-- Mutli platform support (Windows / Linux).
 
 ## Screenshots
 
@@ -26,22 +25,6 @@ A simple Python TUI launcher for Windows PowerShell and Linux terminals that all
 
 - Because this project is free and open source the installer does not come with a digital certificate. Windows may display a SmartScreen message when you first run it.
 
-### Linux
-1. Run the installation script using curl:
-   ```bash
-   curl -sSL "https://raw.githubusercontent.com/PawelKawka/DayzOpenLauncher/main/install.sh" | bash
-   ```
-2. To launch the app, run:
-   ```bash
-   dayzopenlauncher
-   ```
-
-#### Removing
- - To remove the launcher, run:
-```bash
-dayzopenlauncher remove
-```
-
 ## API
 
 - Uses **DZSA API** for global server listing.
@@ -50,5 +33,5 @@ dayzopenlauncher remove
 ---
 
 ## About
-- The program is multi platform (Windows/Linux).
-- Everything is in development.
+- Developed by Pawel Kawka.
+- Open Source and free to use.
