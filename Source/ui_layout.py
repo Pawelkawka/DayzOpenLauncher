@@ -139,6 +139,15 @@ class UILayout:
 
     def _get_updates_text(self):
         if not self.tui.latest_update_info:
+            if platform.system() == "Linux" and VERSION == "1.1.4":
+                return [
+                    ("ansiyellow bold", " --- ITS THE FINAL RELEASE FOR LINUX ---\n\n"),
+                    ("", f" Current version: {VERSION}\n\n"),
+                    ("ansired bold", " IMPORTANT: VERSION 1.1.4 IS THE FINAL VERSION FOR LINUX\n"),
+                    ("", " Future updates will be dedicated specifically to windows only\n\n"),
+                    ("ansigreen", " Thank you for using DayzOpenLauncher on Linux!\n"),
+                ]
+            
             return [
                 ("ansiyellow bold", " --- GitHub Updates ---\n\n"),
                 ("", f" Current version: {VERSION}\n\n"),
