@@ -44,13 +44,9 @@ if platform.system() == "Windows":
         def get_steam_path(): return None
         def get_dayz_path(p): return None
 else:
-    # linux
-    sys.stdout.write("\x1b]2;DayzOpenLauncher\x07")
-    try:
-        from linux.utils import get_steam_path, get_dayz_path
-    except ImportError:
-        def get_steam_path(): return None
-        def get_dayz_path(p): return None
+    # default fallback for any other platform
+    def get_steam_path(): return None
+    def get_dayz_path(p): return None
 
 class DayZLauncherTUI:
     def __init__(self):
@@ -61,15 +57,11 @@ class DayZLauncherTUI:
         self.view_renderer = ViewRenderer(self.data_manager.config)
         
         current_path = self.data_manager.config.get("dayz_path")
-        sys_type = platform.system()
-        is_linux = sys_type == "Linux"
         
         # validate path
         path_invalid = False
         if current_path and current_path != "CANNOT FIND PATH":
-            if is_linux and ("\\" in current_path or ":" in current_path):
-                path_invalid = True
-            elif sys_type == "Windows" and current_path.startswith("/"):
+            if platform.system() == "Windows" and current_path.startswith("/"):
                 path_invalid = True
         
         if not current_path or path_invalid or current_path == "CANNOT FIND PATH":

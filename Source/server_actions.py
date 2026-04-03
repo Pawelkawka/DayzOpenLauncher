@@ -12,10 +12,7 @@ if platform.system() == "Windows":
     except ImportError:
         def launch_dayz(*args): pass
 else:
-    try:
-        from linux.launcher import launch_dayz
-    except ImportError:
-        def launch_dayz(*args): pass
+    def launch_dayz(*args): pass
 
 class ServerActions:
     def __init__(self, config):
@@ -132,7 +129,7 @@ class ServerActions:
                          steam_installed = steam.is_mod_installed(mid) if steam_ready else False
                          
                          if not (disk_exists or steam_installed):
-                              still_missing.append(mid)
+                               still_missing.append(mid)
                      
                      if not still_missing:
                          on_launch_start("All mods verified! Launching game...")
@@ -148,9 +145,6 @@ class ServerActions:
                           try:
                                if platform.system() == "Windows":
                                     os.startfile(steam_url)
-                               else:
-                                
-                                    subprocess.run(["xdg-open", steam_url], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                                time.sleep(0.5)
                           except:
                                try: webbrowser.open(web_url)
@@ -179,9 +173,6 @@ class ServerActions:
             if final_check_missing:
                 on_launch_end(False, f"ERROR: Mods not found! {len(final_check_missing)} rem.")
                 return
-
-            if platform.system() != "Windows":
-                 pass
 
             if self.cancel_requested: return
             success = launch_dayz(dayz_path, server.get('ip'), server.get('port'), profile, final_mod_paths)

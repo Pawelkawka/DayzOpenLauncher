@@ -25,10 +25,8 @@ class Config:
             appdata = os.environ.get("APPDATA")
             if appdata:
                 return os.path.join(appdata, APP_NAME)
-            else:
-                return os.path.join(os.path.expanduser("~"), APP_NAME)
-        else:  # linux
-            return os.path.join(os.path.expanduser("~"), ".config", APP_NAME)
+        
+        return os.path.join(os.path.expanduser("~"), APP_NAME)
 
     def load(self):
         if os.path.exists(self.config_file):
