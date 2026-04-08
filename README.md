@@ -21,9 +21,9 @@ A simple Python TUI launcher for Windows Terminal that allows you to browse DayZ
 3. Run the installer and follow the instructions.
 4. Launch the app via the Desktop shortcut or Start Menu.
 
-#### Windows SmartScreen Warning
-
-- Because this project is free and open source the installer does not come with a digital certificate. Windows may display a SmartScreen message when you first run it.
+> [!WARNING]
+> #### Windows SmartScreen
+> Because this project is free and open source the installer does not come with a digital certificate. Windows may display a SmartScreen message when you first run it.
 
 ## API
 
